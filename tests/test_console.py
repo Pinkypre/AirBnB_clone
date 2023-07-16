@@ -229,7 +229,7 @@ EOF  all  count  create  destroy  help  quit  show  update
 
         with patch('sys.stdout', new=StringIO()) as Oput:
             HBNBCommand().onecmd('{}.show("{}")'.format(classname, uid))
-       x = Oput.getvalue()
+        x = Oput.getvalue()
         self.assertTrue(uid in x)
 
     def test_do_show_error_advanced(self):
