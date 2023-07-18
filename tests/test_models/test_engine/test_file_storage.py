@@ -40,7 +40,7 @@ class TestFileStorage(unittest.TestCase):
         with self.assertRaises(TypeError) as output:
             FileStorage.__init__()
         msage = "descriptor '__init__' of 'object' object needs an argument"
-        self.assertEqual(str(e.exception), msage)
+        self.assertEqual(str(output.exception), msage)
 
     def test_3_init_many_args(self):
         """Tests __init__ with many arguments."""
@@ -48,7 +48,7 @@ class TestFileStorage(unittest.TestCase):
         with self.assertRaises(TypeError) as output:
             b = FileStorage(0, 1, 2, 3, 4, 5, 6, 7, 8, 9)
         msage = "object() takes no parameters"
-        self.assertEqual(str(e.exception), msage)
+        self.assertEqual(str(output.exception), msage)
 
     def test_5_attributes(self):
         """Tests class attributes."""
@@ -103,7 +103,7 @@ class TestFileStorage(unittest.TestCase):
 
         cls = storage.classes()[classname]
         objs = [cls() for x in range(1000)]
-        [storage.new(o) for y in objs]
+        [storage.new(o) for o in objs]
         self.assertEqual(len(objs), len(storage.all()))
         for o in objs:
             key = "{}.{}".format(type(o).__name__, o.id)
@@ -144,7 +144,7 @@ class TestFileStorage(unittest.TestCase):
         with self.assertRaises(TypeError) as output:
             FileStorage.all()
         msage = "all() missing 1 required positional argument: 'self'"
-        self.assertEqual(str(e.exception), msage)
+        self.assertEqual(str(output.exception), msage)
 
     def test_5_all_excess_args(self):
         """Tests all() with too many arguments."""
@@ -152,7 +152,7 @@ class TestFileStorage(unittest.TestCase):
         with self.assertRaises(TypeError) as output:
             FileStorage.all(self, 98)
         msage = "all() takes 1 positional argument but 2 were given"
-        self.assertEqual(str(e.exception), msage)
+        self.assertEqual(str(output.exception), msage)
 
     def help_test_new(self, classname):
         """Helps tests new() method for classname."""
@@ -198,7 +198,7 @@ class TestFileStorage(unittest.TestCase):
         with self.assertRaises(TypeError) as output:
             storage.new()
         msage = "new() missing 1 required positional argument: 'obj'"
-        self.assertEqual(str(e.exception), msage)
+        self.assertEqual(str(output.exception), msage)
 
     def test_5_new_excess_args(self):
         """Tests new() with too many arguments."""
@@ -207,7 +207,7 @@ class TestFileStorage(unittest.TestCase):
         with self.assertRaises(TypeError) as output:
             storage.new(b, 98)
         msage = "new() takes 2 positional arguments but 3 were given"
-        self.assertEqual(str(e.exception), msage)
+        self.assertEqual(str(output.exception), msage)
 
     def help_test_save(self, classname):
         """Helps tests save() method for classname."""
@@ -259,7 +259,7 @@ class TestFileStorage(unittest.TestCase):
         with self.assertRaises(TypeError) as output:
             FileStorage.save()
         msage = "save() missing 1 required positional argument: 'self'"
-        self.assertEqual(str(e.exception), msage)
+        self.assertEqual(str(output.exception), msage)
 
     def test_5_save_excess_args(self):
         """Tests save() with too many arguments."""
@@ -267,7 +267,7 @@ class TestFileStorage(unittest.TestCase):
         with self.assertRaises(TypeError) as output:
             FileStorage.save(self, 98)
         msage = "save() takes 1 positional argument but 2 were given"
-        self.assertEqual(str(e.exception), msage)
+        self.assertEqual(str(output.exception), msage)
 
     def help_test_reload(self, classname):
         """Helps test reload() method for classname."""
@@ -359,7 +359,7 @@ class TestFileStorage(unittest.TestCase):
         with self.assertRaises(TypeError) as output:
             FileStorage.reload()
         msage = "reload() missing 1 required positional argument: 'self'"
-        self.assertEqual(str(e.exception), msage)
+        self.assertEqual(str(output.exception), msage)
 
     def test_5_reload_excess_args(self):
         """Tests reload() with too many arguments."""
@@ -367,7 +367,7 @@ class TestFileStorage(unittest.TestCase):
         with self.assertRaises(TypeError) as output:
             FileStorage.reload(self, 98)
         msage = "reload() takes 1 positional argument but 2 were given"
-        self.assertEqual(str(e.exception), msage)
+        self.assertEqual(str(output.exception), msage)
 
 
 if __name__ == '__main__':

@@ -8,10 +8,9 @@ from models.place import Place
 import re
 import json
 from models.engine.file_storage import FileStorage
-import os
 from models import storage
 from models.base_model import BaseModel
-
+import os
 
 class TestPlace(unittest.TestCase):
 
@@ -30,7 +29,7 @@ class TestPlace(unittest.TestCase):
         """Resets FileStorage data."""
         FileStorage._FileStorage__objects = {}
         if os.path.isfile(FileStorage._FileStorage__file_path):
-            os.remove(FileStorage._FileStorage__file_path)
+            o.remove(FileStorage._FileStorage__file_path)
 
     def test_8_instantiation(self):
         """Tests instantiation of Place class."""
